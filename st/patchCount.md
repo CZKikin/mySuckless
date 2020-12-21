@@ -4,7 +4,7 @@
 [x] *Lost count* Scroll(pgUP,pgDN)
 [x] 3\. Xresources
 [x] 4\. Font2
-[ ]
+[x] 5\. Anysize
 [ ]
 [ ]
 [ ]
