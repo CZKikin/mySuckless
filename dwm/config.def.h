@@ -122,11 +122,12 @@ static Key keys[] = {
 		{ MODKEY|ShiftMask,     60,    tagmon,         {.i = +1 } },                  // period
 		{ MODKEY,	       	    26,    spawn,	       SHCMD("st -e ranger") },       // e
         { MODKEY|ControlMask,   46,    spawn,          SHCMD("slock") },              //l 
-        { ControlMask|ShiftMask, 9,    spawn,          SHCMD("st -e htop") },               //esc
+        { ControlMask|ShiftMask, 9,    spawn,          SHCMD("st -e htop") },         //esc
 		{ MODKEY,	       	    25,    spawn,          {.v = opera } },               //w
 		{ 0, 			        123,   spawn,	       SHCMD(VOLUME_UP) },            //Vol +
 		{ 0,			        122,   spawn,	       SHCMD(VOLUME_DOWN) },          //Vol -
 		{ MODKEY,		        60,    spawn,	       SHCMD("~/.scripts/pick_emo") },//.
+		{ MODKEY,		        96,    spawn,	       SHCMD("~/.scripts/toggleTouchpad") },//F12
         { MODKEY|ShiftMask,     40,    spawn,          SHCMD("discord") },            //d
         { MODKEY|ShiftMask,     58,    spawn,          SHCMD("st -e neomutt") },      //m
         { ALTKEY|ControlMask,   119,   spawn,          SHCMD(SHUTDOWN_MENU) },        //CTRL ALT DEL
