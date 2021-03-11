@@ -2,7 +2,7 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/	                                /*Update Interval*/	/*Update Signal*/
 	{"", 		"~/.scripts/statusScripts/volume",          0,          		3},
-	{"", 		"~/.scripts/statusScripts/memory",	        10,         		1},
+	//{"", 		"~/.scripts/statusScripts/memory",	        10,         		1},
     {"", 		"~/.scripts/statusScripts/date",            1,                  2},
     {"",        "~/.scripts/statusScripts/battery",         15,                 4}
 };

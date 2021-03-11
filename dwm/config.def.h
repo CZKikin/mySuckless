@@ -3,10 +3,10 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Minecraft:size=16","monospace:size=16", "fontawesome:size=16", "symbola:pixelsize=14" };
-static const char dmenufont[]       = "Minecraft:size=16";
+static const char *fonts[]          = { "Hermit:size=16","monospace:size=16", "fontawesome:size=16", "symbola:pixelsize=14" };
+static const char dmenufont[]       = "Hermit:size=16";
 static const unsigned int baralpha  = 125;
 static const unsigned int borderalpha = OPAQUE;
 static char normbgcolor[]           = "#000000"; /* Background of non-selected tag */
@@ -38,7 +38,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "WEB", "DIS", "SIG" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6-MAIL", "7-WEB", "8-DIS", "9-SIG" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -48,10 +48,11 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
     { "Gimp",     NULL,       NULL,       0,            0,           -1 },
     { "steam_app_438040", NULL, NULL,     0,            1,           -1 },
-    { "Steam",    NULL,       NULL,       0,            1,           -1 },
+    { "Steam",    NULL,       NULL,       1 << 0,       1,           -1 },
     { "discord",  NULL,       NULL,       1 << 7,       0,           -1 },
     { "Signal",   NULL,       NULL,       1 << 8,       0,           -1 },
     { "Opera",    NULL,       NULL,       1 << 6,       0,           -1 },
+    { "Thunderbird", NULL,    NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -83,7 +84,7 @@ static const Layout layouts[] = {
 
 /* Longer commands deffinition */
 #define VOLUME_DOWN "pactl set-sink-volume 0 -5% ; pkill -RTMIN+3 dwmblocks" 
-#define VOLUME_UP "[ `pactl list sinks | awk '/\\WHlasitost/ {print $5}' | sed 's/%//g'` -lt 100 ] && { pactl set-sink-volume 0 +5% ; pkill -RTMIN+3 dwmblocks; }"
+#define VOLUME_UP "[ `pactl list sinks | awk '/Hlasitost/ {print $5;exit}' | sed 's/%//g'` -lt 100 ] && { pactl set-sink-volume 0 +5% ; pkill -RTMIN+3 dwmblocks; }"
 #define SHUTDOWN_MENU "exec `echo \"shutdown now\nreboot\nsystemctl suspend\nsystemctl hibernate\" | dmenu`" 
 
 /* commands */
@@ -121,6 +122,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     60,    tagmon,         {.i = +1 } },                  // period
     { MODKEY,	       	    26,    spawn,	       SHCMD("st -e ranger") },       // e
     { MODKEY|ControlMask,   46,    spawn,          SHCMD("slock") },              //l 
+    { 0,                    107,   spawn,          SHCMD("scrot") },              //prt scr
     { ControlMask|ShiftMask, 9,    spawn,          SHCMD("st -e htop") },         //esc
     { MODKEY,	       	    25,    spawn,          {.v = opera } },               //w
     { MODKEY|ShiftMask,     95,   spawn,	       SHCMD(VOLUME_UP) },            //F11
@@ -128,7 +130,7 @@ static Key keys[] = {
     { MODKEY,		        60,    spawn,	       SHCMD("~/.scripts/pick_emo") },//.
     { MODKEY,		        96,    spawn,	       SHCMD("~/.scripts/toggleTouchpad") },//F12
     { MODKEY|ShiftMask,     40,    spawn,          SHCMD("discord") },            //d
-    { MODKEY|ShiftMask,     58,    spawn,          SHCMD("st -e neomutt") },      //m
+    { MODKEY|ShiftMask,     58,    spawn,          SHCMD("thuderbird") },         //m
     { ALTKEY|ControlMask,   119,   spawn,          SHCMD(SHUTDOWN_MENU) },        //CTRL ALT DEL
     TAGKEYS(                10,                    0)                             // 1
         TAGKEYS(                11,                    1)                             // 2
